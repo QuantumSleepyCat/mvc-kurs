@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="go">
+    <output-path>$PROJECT_DIR$/out/artifacts/go</output-path>
+    <root id="root" />
+  </artifact>
+</component>

@@ -1,0 +1,5 @@
+com\javakurs\kursovaya\beans\News.class
+com\javakurs\kursovaya\beans\NewsCollect.class
+com\javakurs\kursovaya\mvc\controllers\IndexControl.class
+com\javakurs\kursovaya\beans\User.class
+com\javakurs\kursovaya\service\ServiceHost.class
