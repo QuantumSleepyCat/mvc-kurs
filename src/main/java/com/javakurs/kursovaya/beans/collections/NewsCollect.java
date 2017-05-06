@@ -1,4 +1,6 @@
-package com.javakurs.kursovaya.beans;
+package com.javakurs.kursovaya.beans.collections;
+
+import com.javakurs.kursovaya.beans.News;
 
 import java.util.List;
 
