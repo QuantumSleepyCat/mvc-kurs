@@ -5,7 +5,10 @@
   Time: 17:57
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="page" tagdir="/WEB-INF/tags" %>
 <head>
     <meta charset="utf-8">
     <title>Онлайн библиотека книг</title>
@@ -38,58 +41,7 @@
 
     <div class="clearfix" style="margin-top: 25px;"></div>
 
-    <nav class="navbar navbar-default" id="nav_ed">
-        <!-- Бренд и переключатель, который вызывает меню на мобильных устройствах -->
-
-        <div class="navbar-header">
-            <!-- Кнопка с полосочками, которая открывает меню на мобильных устройствах -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!-- Бренд или логотип фирмы (обычно содержит ссылку на главную страницу) -->
-            <a href="/" class="navbar-brand">Books</a>
-        </div>
-        <!-- Содержимое меню (коллекция навигационных ссылок, формы и др.) -->
-        <div class="collapse navbar-collapse" id="main-menu" style="background-color: #2ad4d3;">
-            <!-- Список ссылок, расположенных слева -->
-            <ul class="nav navbar-nav">
-                <!--Элемент с классом active отображает ссылку подсвеченной -->
-                <li><a href="/">Главная <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Статьи</a></li>
-                <li><a href="news">Новости</a></li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Каталог <b class="caret"></b></a>
-                    <ul class="dropdown-menu" >
-
-                        <li><a href="#">Фантастика</a></li>
-                        <li><a href="#">Детектив</a></li>
-                        <li><a href="#">Романтика</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#" class="active">Все жанры</a></li>
-                    </ul>
-                </li>
-                <li><a href="news">Новинки</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Статистика<b class="caret"></b></a>
-                    <ul class="dropdown-menu" >
-                        <!--style=" background-color: black;color:white;"-->
-                        <li><a href="#">Рейтинги</a></li>
-                        <li><a href="#">Популярность</a></li>
-                    </ul>
-                </li>
-            </ul>
-
-            <!-- Список ссылок, расположенный справа -->
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Войти</a></li>
-            </ul>
-        </div>
-
-    </nav>
+    <jsp:include page="../nav.jsp"></jsp:include>
 
     <div class="clearfix" style="margin-top: 25px;"></div>
 

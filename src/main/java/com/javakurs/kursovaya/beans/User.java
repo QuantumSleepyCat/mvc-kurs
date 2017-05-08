@@ -1,8 +1,11 @@
 package com.javakurs.kursovaya.beans;
 
+
+
 /**
  * Created by QuantumCat on 05.05.2017.
  */
+
 public class User {
 
     private long id;
@@ -16,7 +19,13 @@ public class User {
     private String email;
 
 
-    public User(){}
+    public User(){
+        this.id=0;
+        this.login=null;
+        this.pass=null;
+        this.role=null;
+        this.email=null;
+    }
 
     public User(long id, String login, String pass, String role, String email)
     {

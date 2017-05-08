@@ -1,23 +1,28 @@
 package com.javakurs.kursovaya.mvc.controllers;
 import com.javakurs.kursovaya.beans.Book;
+import com.javakurs.kursovaya.beans.User;
 import com.javakurs.kursovaya.beans.collections.BooksCollect;
 import com.javakurs.kursovaya.beans.collections.NewsCollect;
 import com.javakurs.kursovaya.service.ServiceHost;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.RestTemplate;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by QuantumCat on 26.04.2017.
  */
 //@RequestParam(value="name", required = false, defaultValue = "World") String name,
 @Controller
+@SessionAttributes( value = "authUser")
 public class IndexControl {
 
 
     @RequestMapping(value="/")
-    public String index(ModelMap model)
+    public String index(ModelMap model, HttpSession httpSession)
     {
         String uri = ServiceHost.getUrl("news"); //"http://localhost:8085/books-service/user/1";
 
@@ -27,7 +32,12 @@ public class IndexControl {
         RestTemplate rest= new RestTemplate();
         uri= ServiceHost.getUrl("books/forindex");
         BooksCollect booksCollect=rest.getForObject(uri, BooksCollect.class);
+        model.addAttribute("user", new User());
 
+        if(httpSession.getAttribute("authUser")==null)
+        {
+            model.addAttribute("user", new User());
+        }
 
         for(int i=0;i<3;i++) {
             //Заполнение для новостей

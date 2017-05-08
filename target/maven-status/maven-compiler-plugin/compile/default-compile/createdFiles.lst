@@ -8,3 +8,4 @@ com\javakurs\kursovaya\beans\News.class
 com\javakurs\kursovaya\beans\collections\NewsCollect.class
 com\javakurs\kursovaya\beans\User.class
 com\javakurs\kursovaya\beans\collections\BooksCollect.class
+com\javakurs\kursovaya\mvc\controllers\UserController.class
