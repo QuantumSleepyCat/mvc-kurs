@@ -9,35 +9,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="page" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <head>
     <meta charset="utf-8">
     <title>Онлайн библиотека книг</title>
-    <link rel='stylesheet' href='resources/css/index_page/indexStyle.css'  >
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">
-    <script  src="resources/js/jquery-2.1.4.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' href='/resources/css/catalog/styleCatalog.css'  >
+    <link rel='stylesheet' href='/resources/css/index_page/indexStyle.css'  >
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap-theme.min.css">
+    <script  src="/resources/js/jquery-2.1.4.min.js"></script>
+    <script src="/resources/js/bootstrap.min.js"></script>
 
 
 
 </head>
 <body>
 <div class="container">
-    <header>
-        <div id="logo">
-            <div name="logo" class="col-sm-9 col-md-9 left" id="lg"><a href="\"><div class="lg_home"></div></a></div>
-            <div class="col-sm-3 col-md-3 right" id="search">
-                <form class="navbar-form" role="search" >
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Поиск" name="q">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit" id="search_btn"><i class="glyphicon glyphicon-search"></i></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="../header.jsp"></jsp:include>
 
     <div class="clearfix" style="margin-top: 25px;"></div>
 
@@ -45,56 +33,78 @@
 
     <div class="clearfix" style="margin-top: 25px;"></div>
 
-    <div id="slid">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
+    <jsp:include page="../slider.jsp"></jsp:include>
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img src="../../resources/images/slider/lib1.jpg" alt="About book">
-                    <div class="carousel-caption">
-                        <h3>Los Angeles</h3>
-                        <p>LA is always so much fun!</p>
-                    </div>
+    <div class="clearfix" style="margin-top: 25px;"></div>
+        <div class="news">
+            <div class="lat_news"><h3>Книги</h3></div>
+            <div class="clearfix" style="margin-top: 25px;"></div>
+            <div class="col-sm-8">
+            <c:forEach var="book" items="${bookList}">
+            <div class="books">
+                <div class="col-sm-4">
+                    <img src="/resources/images/books_promo/${book.id}.jpg"  alt="Book3" width="191" height="300">
                 </div>
-
-                <div class="item">
-                    <img src="../../resources/images/slider/bk1.jpg" alt="About book">
-                    <div class="carousel-caption">
-                        <h3>Chicago</h3>
-                        <p>Thank you, Chicago!</p>
-                    </div>
+                <div class="col-sm-8">
+                    <div class="lat_news"><a href="/books/${book.id}" class="book-title"><h3>${book.title}</h3></a></div>
                 </div>
+                <div class="col-sm-8">
+                    <div class="about"><i>Добавил: ${book.user.login}, Дата: ${book.date}, ${book.time}</i></div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="description">${book.description}</div>
+                </div>
+                <div class="clearfix" style="margin-top: 20px;"></div>
+                <div class="col-sm-12">
+                    <div class="about_bot_op"><i>Посмотрели: ${book.count_people}</i></div>
+                </div>
+            </div>
+            </c:forEach>
+            </div>
 
-                <div class="item">
-                    <img src="../../resources/images/slider/lib2.jpg" alt="About book">
-                    <div class="carousel-caption">
-                        <h3>New York</h3>
-                        <p>We love the Big Apple!</p>
+            <div class="col-sm-4">
+                <div class="sort_search">
+                    <div class="lat_news"><h3>Поиск</h3></div>
+                    <div id="by_title">
+                        <form>
+                            <label>Название:</label>
+                            </br>
+                            <input type="text" name="by_title" class="pol" id="title_s" placeholder="Введите название...">
+                            <input type="submit" name="search" value="Найти" class="but_s">
+                        </form>
+                    </div>
+                    <div class="clearfix" style="margin-bottom: 20px;"></div>
+                    <div id="by_author">
+                        <form>
+                            <label>Автор:</label></br>
+                            <input type="text" name="by_author" class="pol" id="author_s" placeholder="Введите автора...">
+                            <input type="submit" name="search" value="Найти" class="but_s">
+                        </form>
+                    </div>
+                    <div class="clearfix" style="margin-bottom: 20px;"></div>
+                    <div class="lat_news"><h3>Сортировка</h3></div>
+                    <div id="sort">
+                        <form action="/books/sort" method="POST">
+                            <label>Категория:</label></br>
+                            <select class="pol" name="sort_pol">
+                                <option name="reit">По рейтингу</option>
+                                <option name="popul">По популярности</option>
+                            </select>
+                            <input type="submit" name="search" value="Начать" class="but_s">
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <div class="clearfix" style="margin-top: 25px;"></div>
+            <ul class="pagination" style="padding-left: 15px;">
+                <c:forEach var="page" items="${pageList}">
+                    ${page}
+                </c:forEach>
+            </ul>
+
         </div>
-    </div>
-
     <div class="clearfix" style="margin-top: 25px;"></div>
-
     <footer>
         <h5>Copyright © 2017 - Онлайн библиотека by Владислав Тоболич</h5>
     </footer>

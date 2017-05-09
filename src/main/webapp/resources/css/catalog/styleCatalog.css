@@ -1,0 +1,63 @@
+.sort_search
+{
+	width: 100%;
+	background-color: #040404;
+	overflow: auto; 
+	padding: 20px;
+}
+
+
+label
+{
+	color:white;
+}
+
+
+.pol
+{
+	height: 40px;
+	border-radius: 4px;
+	width: 70%;
+	float: left;
+}
+
+.but_s
+{
+    background-color: #2ad4d3;
+    border-radius: 0px;
+    height: 40px;
+    border: 0px;
+    text-align: center;
+    color:black;
+    margin-left: 4px;
+    width: 27%; float: right;
+    padding: inherit;
+    
+}
+
+.but_s:hover
+{
+    background-color: #85eeed;
+}
+
+.about_bot_op
+{
+    padding: 6px;
+    min-height: 30px;
+    background-color: #141414;
+    color:#959595;
+    margin-top: 15px;
+    margin-bottom: 4px;
+}
+
+.pagin
+{
+    background-color: #040404 !important;
+    color: #2ad4d3 !important;
+    border: 1px solid #2ad4d3!important;
+}
+
+.pagin.act
+{
+    background-color: #737373 !important;
+}
