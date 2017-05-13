@@ -85,7 +85,7 @@
                 <img src="/resources/images/books_promo/${idbook0}.jpg"  alt="Book1" width="191" height="300">
             </div>
             <div class="col-sm-9">
-                <div class="lat_news"><a href="/books/${idbook0}" class="book-title"><h3>${booktitle0}</h3></a></div>
+                <div class="lat_news"><a href="/books/book/${idbook0}" class="book-title"><h3>${booktitle0}</h3></a></div>
             </div>
             <div class="col-sm-9">
                 <div class="about"><i>Добавил: ${userAut0}, Дата: ${time0}</i></div>
@@ -100,7 +100,7 @@
                 <img src="/resources/images/books_promo/${idbook1}.jpg"  alt="Book2" width="191" height="300">
             </div>
             <div class="col-sm-9">
-                <div class="lat_news"><a href="/books/${idbook1}" class="book-title"><h3>${booktitle1}</h3></a></div>
+                <div class="lat_news"><a href="/books/book/${idbook1}" class="book-title"><h3>${booktitle1}</h3></a></div>
             </div>
             <div class="col-sm-9">
                 <div class="about"><i>Добавил: ${userAut1}, Дата: ${time1}</i></div>
@@ -115,7 +115,7 @@
                 <img src="/resources/images/books_promo/${idbook2}.jpg"  alt="Book3" width="191" height="300">
             </div>
             <div class="col-sm-9">
-                <div class="lat_news"><a href="/books/${idbook2}" class="book-title"><h3>${booktitle2}</h3></a></div>
+                <div class="lat_news"><a href="/books/book/${idbook2}" class="book-title"><h3>${booktitle2}</h3></a></div>
             </div>
             <div class="col-sm-9">
                 <div class="about"><i>Добавил: ${userAut2}, Дата: ${time2}</i></div>

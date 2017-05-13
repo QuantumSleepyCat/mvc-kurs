@@ -78,7 +78,7 @@
         <!-- Список ссылок, расположенных слева -->
         <ul class="nav navbar-nav">
             <!--Элемент с классом active отображает ссылку подсвеченной -->
-            <li class="active"><a href="/">Главная <span class="sr-only">(current)</span></a></li>
+            <li><a href="/">Главная <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Статьи</a></li>
             <li><a href="news">Новости</a></li>
 

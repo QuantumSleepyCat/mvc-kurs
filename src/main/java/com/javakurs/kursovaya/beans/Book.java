@@ -22,6 +22,7 @@ public class Book {
     private User user;
     private List<Links> linksList = new ArrayList<>();
     public Book(){}
+    private List<Comments> commentsList=new ArrayList<>();
 
     public Book(long id, String title, String author, String genre, String description, int year, String date, String time, String edition, float reit,int count_people, User user)
     {
@@ -53,6 +54,10 @@ public class Book {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public void setCommentsList(List<Comments> commentsList) {
+        this.commentsList = commentsList;
     }
 
     public void setUser(User user) {
@@ -109,6 +114,10 @@ public class Book {
 
     public String getDescription() {
         return description;
+    }
+
+    public List<Comments> getCommentsList() {
+        return commentsList;
     }
 
     public String getDate() {

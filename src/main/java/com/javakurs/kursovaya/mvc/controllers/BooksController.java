@@ -1,8 +1,10 @@
 package com.javakurs.kursovaya.mvc.controllers;
 
 import com.javakurs.kursovaya.beans.Book;
+import com.javakurs.kursovaya.beans.Comments;
 import com.javakurs.kursovaya.beans.User;
 import com.javakurs.kursovaya.beans.collections.BooksCollect;
+import com.javakurs.kursovaya.beans.collections.CommentCollect;
 import com.javakurs.kursovaya.service.ServiceHost;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -108,6 +110,39 @@ public class BooksController {
         model.addAttribute("pageList", pageList);
 
         return "/catalog/books";
+    }
+
+
+    @RequestMapping(value = "/book/{bookId}", method = RequestMethod.GET)
+    public String getBook(@PathVariable int bookId, ModelMap model, HttpSession httpSession)
+    {
+        init(model,httpSession);
+
+        RestTemplate rest = new RestTemplate();
+
+        String uri= ServiceHost.getUrl("books/"+bookId);
+        Book book=rest.getForObject(uri, Book.class);
+
+        CommentCollect commentCollect = rest.getForObject(ServiceHost.getUrl("books/com/"+bookId), CommentCollect.class);
+        model.addAttribute("title", book.getTitle());
+        model.addAttribute("id", book.getId());
+        model.addAttribute("rating", book.getReit());
+        model.addAttribute("count", book.getCount_people());
+        model.addAttribute("genre", book.getGenre());
+        model.addAttribute("author", book.getAuthor());
+        model.addAttribute("edit",book.getEdition());
+        model.addAttribute("year", book.getYear());
+        model.addAttribute("description", book.getDescription());
+        model.addAttribute("userAut", book.getUser().getLogin());
+        model.addAttribute("time", book.getDate()+", "+book.getTime());
+        model.addAttribute("size_list", commentCollect.getCommentsListCollects().size());
+        System.out.println(commentCollect.getCommentsListCollects().size());
+        for(Comments c: commentCollect.getCommentsListCollects())
+        {
+            System.out.println(c.getMessage());
+        }
+        model.addAttribute("com_list", commentCollect.getCommentsListCollects());
+        return "/catalog/book/book";
     }
 
 //    @RequestMapping(value = "/sort", method = RequestMethod.POST)

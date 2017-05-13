@@ -46,7 +46,7 @@
                     <img src="/resources/images/books_promo/${book.id}.jpg"  alt="Book3" width="191" height="300">
                 </div>
                 <div class="col-sm-8">
-                    <div class="lat_news"><a href="/books/${book.id}" class="book-title"><h3>${book.title}</h3></a></div>
+                    <div class="lat_news"><a href="/books/book/${book.id}" class="book-title"><h3>${book.title}</h3></a></div>
                 </div>
                 <div class="col-sm-8">
                     <div class="about"><i>Добавил: ${book.user.login}, Дата: ${book.date}, ${book.time}</i></div>

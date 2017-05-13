@@ -1,0 +1,105 @@
+#rai_title
+{
+    //font-size: 25px;
+    text-align: left;
+    color: white;
+    height: 40px;
+    position: relative;
+    //top: 10px;
+}
+
+.rai
+{
+    color:white;
+}
+
+.poster
+{
+    max-width: 380px;
+    float:left;
+}
+
+.book_descrip
+{
+    float:initial;
+}
+
+#reit_bord
+{
+    border-bottom: 1px solid #2ad4d3;
+    overflow: auto;
+}
+
+.ab_book
+{
+    color: white;
+    padding-top: 15px;
+    overflow: auto;
+    padding-bottom: 2px;
+}
+
+.line{
+    border-bottom: 1px solid #2ad4d3;
+    height: 2px;
+}
+
+.descrab
+{
+    color: white;
+}
+
+.links
+{
+    width: 100%;
+    overflow: auto;
+    background-color: #040404;
+}
+
+#back_des
+{
+    background-color: #040404;
+    padding-bottom: 20px;
+}
+
+#info
+{
+    margin-top: 10px;
+}
+
+.user_av
+{
+overflow: auto;
+}
+
+.avatr
+{
+    width: 65px;
+}
+
+.comm
+{
+    overflow: auto;
+    background-color: #040404;
+    border-top: 1px solid #2ad4d3;
+    border-bottom: 1px solid #2ad4d3;
+    min-height: 100px;
+    margin-bottom: 5px;
+}
+
+.log_us
+{
+    color: #2ad4d3;
+    padding-left: 10px;
+}
+
+.time
+{
+    float: right;
+    position: relative;
+    color: #D2691E;
+}
+
+.text_comment
+{
+    color: white;
+}
