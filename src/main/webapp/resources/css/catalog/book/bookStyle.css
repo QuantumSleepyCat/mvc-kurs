@@ -103,3 +103,10 @@ overflow: auto;
 {
     color: white;
 }
+
+.minus_del
+{
+    position: relative;
+    float: right;
+    right: 10px;
+}

@@ -1,11 +1,14 @@
 package com.javakurs.kursovaya.mvc.controllers;
 
+import com.javakurs.kursovaya.beans.Bookmarks;
 import com.javakurs.kursovaya.beans.User;
+import com.javakurs.kursovaya.beans.collections.BookmarksCollection;
 import com.javakurs.kursovaya.service.ServiceHost;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +16,7 @@ import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 /**
@@ -23,6 +27,14 @@ import javax.validation.Valid;
 @RequestMapping(value = "/user")
 public class UserController {
 
+
+    public void init(ModelMap model, HttpSession httpSession)
+    {
+        if(httpSession.getAttribute("authUser")==null)
+        {
+            model.addAttribute("user", new User());
+        }
+    }
 
 //    @RequestMapping(value = "/authorization",method = RequestMethod.POST)
 //    public ModelAndView authorization(@Valid @ModelAttribute User user)
@@ -102,6 +114,40 @@ public class UserController {
         // System.out.println(user);
         return modelAndView;
     }
+
+    @RequestMapping(value = "/profile/{id}",method = RequestMethod.GET)
+    public String getProfile(@PathVariable int id, ModelMap model, HttpSession httpSession)
+    {
+        init(model, httpSession);
+        RestTemplate rest = new RestTemplate();
+        String uri= ServiceHost.getUrl("user/"+id);
+        User user = rest.getForObject(uri, User.class);
+        RestTemplate rest2 = new RestTemplate();
+        BookmarksCollection bookmarksCollection = rest2.getForObject(ServiceHost.getUrl("user/profile/"+id), BookmarksCollection.class);
+        System.out.println(user.getLogin());
+        for(Bookmarks b : bookmarksCollection.getBookmarksList())
+       {
+           System.out.println(b.getBook().getTitle());
+      }
+        Bookmarks bookmarks = rest2.getForObject(ServiceHost.getUrl("user/bo/"+id), Bookmarks.class);
+        System.out.println(bookmarks.getBook().getTitle());
+        model.addAttribute("login", user.getLogin());
+        model.addAttribute("date", "01.01.1990");
+        model.addAttribute("pol", "Мужской");
+        model.addAttribute("role",user.getRole());
+        model.addAttribute("bookmarks",bookmarksCollection.getBookmarksList());
+
+        return "/user/profile";
+    }
+
+    @RequestMapping(value = "/exit", method = RequestMethod.GET)
+    public ModelAndView exit()
+    {
+        ModelAndView modelAndView = new ModelAndView("redirect:/");
+        modelAndView.addObject("authUser", new User());
+        return modelAndView;
+    }
+
 
     public static boolean isUser(@ModelAttribute("authUser") User user) {
         if (user.getRole() == null) return false;

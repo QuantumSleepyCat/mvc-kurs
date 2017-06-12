@@ -1,6 +1,8 @@
 package com.javakurs.kursovaya.beans;
 
 
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by QuantumCat on 05.05.2017.
@@ -36,6 +38,15 @@ public class User {
         this.email=email;
     }
 
+    private List<Bookmarks> bookmarksList;
+
+    public List<Bookmarks> getBookmarksList() {
+        return bookmarksList;
+    }
+
+    public void setBookmarksList(List<Bookmarks> bookmarksList) {
+        this.bookmarksList = bookmarksList;
+    }
 
     public void setId(long id) {
         this.id = id;

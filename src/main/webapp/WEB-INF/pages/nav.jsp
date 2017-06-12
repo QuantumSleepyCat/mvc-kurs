@@ -79,7 +79,6 @@
         <ul class="nav navbar-nav">
             <!--Элемент с классом active отображает ссылку подсвеченной -->
             <li><a href="/">Главная <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Статьи</a></li>
             <li><a href="news">Новости</a></li>
 
             <li class="dropdown">
@@ -89,17 +88,22 @@
                     <li><a href="#">Фантастика</a></li>
                     <li><a href="#">Детектив</a></li>
                     <li><a href="#">Романтика</a></li>
+                    <li><a href="#">Биография</a></li>
+                    <li><a href="#">Детская литература</a></li>
+                    <li><a href="#">Роман</a></li>
+                    <li><a href="#">Ужасы</a></li>
+                    <li><a href="#">Юмор</a></li>
+                    <li><a href="#">Боевик</a></li>
                     <li class="divider"></li>
                     <li><a href="/books">Все жанры</a></li>
                 </ul>
             </li>
-            <li><a href="news">Новинки</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Статистика<b class="caret"></b></a>
                 <ul class="dropdown-menu" >
                     <!--style=" background-color: black;color:white;"-->
-                    <li><a href="#">Рейтинги</a></li>
-                    <li><a href="#">Популярность</a></li>
+                    <li><a href="/stat/column">Рейтинги</a></li>
+                    <li><a href="/stat/pie">Популярность</a></li>
                 </ul>
             </li>
         </ul>
@@ -114,13 +118,28 @@
 
         <c:if test="${isUser == true}">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" >${authUser.login}</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">${authUser.login}<b class="caret"></b></a>
+                    <ul class="dropdown-menu" >
+                        <!--style=" background-color: black;color:white;"-->
+                        <li><a href="/user/profile/${authUser.id}">Профиль</a></li>
+                        <li><a href="/user/exit">Выход</a></li>
+                    </ul>
+                </li>
             </ul>
         </c:if>
 
         <c:if test="${isAdmin == true}">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" >${authUser.login}</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">${authUser.login}<b class="caret"></b></a>
+                    <ul class="dropdown-menu" >
+                        <!--style=" background-color: black;color:white;"-->
+                        <li><a href="/user/profile/${authUser.id}">Профиль</a></li>
+                        <li><a href="/admin">Администрирование</a></li>
+                        <li><a href="/user/exit">Выход</a></li>
+                    </ul>
+                </li>
             </ul>
         </c:if>
 

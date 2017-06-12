@@ -20,24 +20,24 @@
             <div class="item active">
                 <img src="../../resources/images/slider/lib1.jpg" alt="About book">
                 <div class="carousel-caption">
-                    <h3>Los Angeles</h3>
-                    <p>LA is always so much fun!</p>
+                    <h3>Л. Гинзбург</h3>
+                    <p>Профессионализм – это обращенное в профессию творчество.</p>
                 </div>
             </div>
 
             <div class="item">
                 <img src="../../resources/images/slider/bk1.jpg" alt="About book">
                 <div class="carousel-caption">
-                    <h3>Chicago</h3>
-                    <p>Thank you, Chicago!</p>
+                    <h3>Г. Форд</h3>
+                    <p>Собраться вместе – это начало, остаться вместе – это успех.</p>
                 </div>
             </div>
 
             <div class="item">
                 <img src="../../resources/images/slider/lib2.jpg" alt="About book">
                 <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
+                    <h3>И. Бродский</h3>
+                    <p>Свобода существует затем, чтобы ходить в библиотеку.</p>
                 </div>
             </div>
         </div>

@@ -69,7 +69,7 @@
         </div>
         <div class="line" style="margin-bottom: 10px;"></div>
         <a href="#spoiler-1" data-toggle="collapse" class="btn btn-success">Скачать</a>
-        <a href="#spoiler-1" class="btn btn-success" style="float:right;">Читать</a>
+        <a href="/reader/${id}" class="btn btn-success" style="float:right;">Читать</a>
         <div class="collapse" id="spoiler-1">
             <div class="links">
                 <a href="#">Источник 1</a>
@@ -94,7 +94,20 @@
                     <img src="/resources/images/comment/57.jpg" width="65" style="float: left;">
                     <strong class="log_us">${com.user.login}</strong><div class="time"><i>Дата: ${com.date} Время ${com.time}</i></div>
                 <div class="text_comment">${com.message}</div>
+
                 </div>
+                    <c:choose>
+                        <c:when test="${authUser.role != null}">
+                            <spring:eval expression="authUser.role == 'user'" var="isUser"/>
+                            <spring:eval expression="authUser.role == 'admin'" var="isAdmin"/>
+
+                            <c:if test="${isAdmin == true}">
+                    <div class="minus_del">
+                        <a href="/delete/com" class="glyphicon glyphicon-minus" style="color: red;"></a>
+                    </div>
+                            </c:if>
+                        </c:when>
+                    </c:choose>
                 </div>
                 </div>
                     </c:when>
@@ -104,6 +117,18 @@
                     <strong class="log_us">${com.user.login}</strong><div class="time"><i>Дата: ${com.date} Время ${com.time}</i></div>
                     <div class="text_comment">${com.message}</div>
                 </div>
+                    <c:choose>
+                        <c:when test="${authUser.role != null}">
+                            <spring:eval expression="authUser.role == 'user'" var="isUser"/>
+                            <spring:eval expression="authUser.role == 'admin'" var="isAdmin"/>
+
+                            <c:if test="${isAdmin == true}">
+                                <div class="minus_del">
+                                    <a href="/delete/com" class="glyphicon glyphicon-minus" style="color: red;"></a>
+                                </div>
+                            </c:if>
+                        </c:when>
+                    </c:choose>
                 </div>
                 </div>
                     </c:otherwise>
@@ -119,11 +144,21 @@
 
 
                         <c:if test="${isUser == true}">
-                            Будет поле
+
+                            <form:form action="/comment" method="post">
+                            <div class="form-group">
+                                <label for="comment1">Комментарий:</label>
+                                <textarea class="form-control" rows="5" id="comment1"></textarea>
+                            </div>
+                                <form:button></form:button>
+                            </form:form>
                         </c:if>
 
                         <c:if test="${isAdmin == true}">
-                            Будет поле
+                            <div class="form-group">
+                                <label for="comment2">Комментарий:</label>
+                                <textarea class="form-control" rows="5" id="comment2"></textarea>
+                            </div>
                         </c:if>
 
                     </c:when>
